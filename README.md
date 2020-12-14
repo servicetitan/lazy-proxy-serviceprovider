@@ -1,4 +1,4 @@
-# Lazy Dependency Injection for Microsoft.Extensions.DependencyInjection.ServiceProvider
+# Lazy Dependency Injection for Microsoft's DI ServiceProvider
 
 A [LazyProxy](https://github.com/servicetitan/lazy-proxy) can be used for IoC containers to improve performance by changing the resolve behavior.
 
