@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+     <Version>2.0.0</Version>
+      <PackageId>LazyProxy.ServiceProvider</PackageId>
+      <PackageProjectUrl>https://github.com/cmendible/lazy-proxy-serviceprovider</PackageProjectUrl>
+      <PackageLicenseUrl>https://github.com/cmendible/lazy-proxy-serviceprovider/blob/master/LICENSE</PackageLicenseUrl>
+      <RepositoryUrl>https://github.com/cmendible/lazy-proxy-serviceprovider</RepositoryUrl>
+      <RepositoryType>git</RepositoryType>
+      <PackageTags>Microsoft.Extensions.DependencyInjection.ServiceProvider container lazy injection proxy dynamic runtime wrapper</PackageTags>
+      <Description>Lazy injection for Microsoft.Extensions.DependencyInjection.ServiceProvider container</Description>
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LazyProxy" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+  </ItemGroup>
+
+</Project>
