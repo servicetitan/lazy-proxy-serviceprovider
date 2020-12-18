@@ -97,50 +97,6 @@ namespace LazyProxy.ServiceProvider
         }
 
         /// <summary>
-        /// Adds a transient service of the type specified in <paramref name="serviceType"/> to the
-        /// specified <see cref="IServiceCollection"/>.
-        /// </summary>
-        /// <param name="services">The <see cref="IServiceCollection"/> to add the service to.</param>
-        /// <param name="serviceType">The type of the service to register and the implementation to use.</param>
-        /// <returns>A reference to this instance after the operation has completed.</returns>
-        /// <seealso cref="ServiceLifetime.Transient"/>
-        public static IServiceCollection AddLazyTransient(
-            this IServiceCollection services,
-            Type serviceType)
-        {
-            if (services == null)
-            {
-                throw new ArgumentNullException(nameof(services));
-            }
-
-            if (serviceType == null)
-            {
-                throw new ArgumentNullException(nameof(serviceType));
-            }
-
-            return services.AddLazyTransient(serviceType, serviceType);
-        }
-
-        /// <summary>
-        /// Adds a transient service of the type specified in <typeparamref name="TService"/> to the
-        /// specified <see cref="IServiceCollection"/>.
-        /// </summary>
-        /// <typeparam name="TService">The type of the service to add.</typeparam>
-        /// <param name="services">The <see cref="IServiceCollection"/> to add the service to.</param>
-        /// <returns>A reference to this instance after the operation has completed.</returns>
-        /// <seealso cref="ServiceLifetime.Transient"/>
-        public static IServiceCollection AddLazyTransient<TService>(this IServiceCollection services)
-            where TService : class
-        {
-            if (services == null)
-            {
-                throw new ArgumentNullException(nameof(services));
-            }
-
-            return services.AddLazyTransient(typeof(TService));
-        }
-
-        /// <summary>
         /// Adds a transient service of the type specified in <typeparamref name="TService"/> with a
         /// factory specified in <paramref name="implementationFactory"/> to the
         /// specified <see cref="IServiceCollection"/>.
@@ -288,50 +244,6 @@ namespace LazyProxy.ServiceProvider
         }
 
         /// <summary>
-        /// Adds a scoped service of the type specified in <paramref name="serviceType"/> to the
-        /// specified <see cref="IServiceCollection"/>.
-        /// </summary>
-        /// <param name="services">The <see cref="IServiceCollection"/> to add the service to.</param>
-        /// <param name="serviceType">The type of the service to register and the implementation to use.</param>
-        /// <returns>A reference to this instance after the operation has completed.</returns>
-        /// <seealso cref="ServiceLifetime.Scoped"/>
-        public static IServiceCollection AddLazyScoped(
-            this IServiceCollection services,
-            Type serviceType)
-        {
-            if (services == null)
-            {
-                throw new ArgumentNullException(nameof(services));
-            }
-
-            if (serviceType == null)
-            {
-                throw new ArgumentNullException(nameof(serviceType));
-            }
-
-            return services.AddLazyScoped(serviceType, serviceType);
-        }
-
-        /// <summary>
-        /// Adds a scoped service of the type specified in <typeparamref name="TService"/> to the
-        /// specified <see cref="IServiceCollection"/>.
-        /// </summary>
-        /// <typeparam name="TService">The type of the service to add.</typeparam>
-        /// <param name="services">The <see cref="IServiceCollection"/> to add the service to.</param>
-        /// <returns>A reference to this instance after the operation has completed.</returns>
-        /// <seealso cref="ServiceLifetime.Scoped"/>
-        public static IServiceCollection AddLazyScoped<TService>(this IServiceCollection services)
-            where TService : class
-        {
-            if (services == null)
-            {
-                throw new ArgumentNullException(nameof(services));
-            }
-
-            return services.AddLazyScoped(typeof(TService));
-        }
-
-        /// <summary>
         /// Adds a scoped service of the type specified in <typeparamref name="TService"/> with a
         /// factory specified in <paramref name="implementationFactory"/> to the
         /// specified <see cref="IServiceCollection"/>.
@@ -389,7 +301,6 @@ namespace LazyProxy.ServiceProvider
 
             return services.AddLazyScoped(typeof(TService), implementationFactory);
         }
-
 
         private static IServiceCollection AddLazy(
             this IServiceCollection collection,
