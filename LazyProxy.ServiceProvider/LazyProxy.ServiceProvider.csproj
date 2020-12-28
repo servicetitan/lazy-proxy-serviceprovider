@@ -1,24 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-     <Version>0.1.0</Version>
-      <PackageId>LazyProxy.ServiceProvider</PackageId>
-      <Company>ServiceTitan, Inc.</Company>
-      <Authors>ServiceTitan, Inc.</Authors>
-      <Copyright>Copyright ServiceTitan, Inc.</Copyright>
-      <PackageProjectUrl>https://github.com/servicetitan/lazy-proxy-serviceprovider</PackageProjectUrl>
-      <PackageLicenseUrl>https://github.com/servicetitan/lazy-proxy-serviceprovider/blob/master/LICENSE</PackageLicenseUrl>
-      <RepositoryUrl>https://github.com/servicetitan/lazy-proxy-serviceprovider</RepositoryUrl>
-      <RepositoryType>git</RepositoryType>
-      <PackageTags>Microsoft.Extensions.DependencyInjection.ServiceProvider ServiceProvider container lazy injection proxy dynamic runtime wrapper</PackageTags>
-      <Description>Lazy injection for Microsoft.Extensions.DependencyInjection.ServiceProvider container</Description>
-      <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <Version>0.1.0</Version>
+        <PackageId>LazyProxy.ServiceProvider</PackageId>
+        <Company>ServiceTitan, Inc.</Company>
+        <Authors>ServiceTitan, Inc.</Authors>
+        <Copyright>Copyright ServiceTitan, Inc.</Copyright>
+        <PackageProjectUrl>https://github.com/servicetitan/lazy-proxy-serviceprovider</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/servicetitan/lazy-proxy-serviceprovider/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/servicetitan/lazy-proxy-serviceprovider</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>Microsoft.Extensions.DependencyInjection.ServiceProvider ServiceProvider container lazy injection proxy dynamic runtime wrapper</PackageTags>
+        <Description>Lazy injection for Microsoft.Extensions.DependencyInjection.ServiceProvider container</Description>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="LazyProxy" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
-  </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="LazyProxy" Version="1.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+    </ItemGroup>
 
 </Project>
