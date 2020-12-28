@@ -17,8 +17,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="LazyProxy" Version="1.0.0" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+        <PackageReference Include="LazyProxy" Version="1.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
     </ItemGroup>
 
 </Project>
