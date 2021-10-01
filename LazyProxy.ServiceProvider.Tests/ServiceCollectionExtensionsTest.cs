@@ -9,16 +9,33 @@ namespace LazyProxy.ServiceProvider.Tests
 
     public class ServiceCollectionExtensionsTest
     {
-        [Fact]
-        public void ServiceCtorMustBeExecutedAfterMethodIsCalledForTheFirstTime()
+
+        [InlineData(ServiceLifetime.Scoped)]
+        [InlineData(ServiceLifetime.Singleton)]
+        [InlineData(ServiceLifetime.Transient)]
+        [Theory]
+        public void ServiceCtorMustBeExecutedAfterMethodIsCalledForTheFirstTime(ServiceLifetime lifetime)
         {
             _service1Id = string.Empty;
             _service2Id = string.Empty;
 
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddLazyScoped<IService1, Service1>();
-            serviceCollection.AddScoped<IService2, Service2>();
-
+            switch (lifetime)
+            {
+                case ServiceLifetime.Scoped:
+                    serviceCollection.AddLazyScoped<IService1, Service1>();
+                    serviceCollection.AddScoped<IService2, Service2>();
+                    break;
+                case ServiceLifetime.Singleton:
+                    serviceCollection.AddLazySingleton<IService1, Service1>();
+                    serviceCollection.AddSingleton<IService2, Service2>();
+                    break;
+                case ServiceLifetime.Transient:
+                    serviceCollection.AddLazyTransient<IService1, Service1>();
+                    serviceCollection.AddTransient<IService2, Service2>();
+                    break;
+            }
+            
             using (var serviceProvider = serviceCollection.BuildServiceProvider())
             {
                 var service = serviceProvider.GetService<IService1>();
@@ -43,15 +60,31 @@ namespace LazyProxy.ServiceProvider.Tests
             }
         }
 
-        [Fact]
-        public void ServiceCtorMustBeExecutedAfterPropertyGetterIsCalledForTheFirstTime()
+        [InlineData(ServiceLifetime.Scoped)]
+        [InlineData(ServiceLifetime.Singleton)]
+        [InlineData(ServiceLifetime.Transient)]
+        [Theory]
+        public void ServiceCtorMustBeExecutedAfterPropertyGetterIsCalledForTheFirstTime(ServiceLifetime lifetime)
         {
             _service1Id = string.Empty;
             _service2Id = string.Empty;
 
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddLazyScoped<IService1, Service1>();
-            serviceCollection.AddScoped<IService2, Service2>();
+            switch (lifetime)
+            {
+                case ServiceLifetime.Scoped:
+                    serviceCollection.AddLazyScoped<IService1, Service1>();
+                    serviceCollection.AddScoped<IService2, Service2>();
+                    break;
+                case ServiceLifetime.Singleton:
+                    serviceCollection.AddLazySingleton<IService1, Service1>();
+                    serviceCollection.AddSingleton<IService2, Service2>();
+                    break;
+                case ServiceLifetime.Transient:
+                    serviceCollection.AddLazyTransient<IService1, Service1>();
+                    serviceCollection.AddTransient<IService2, Service2>();
+                    break;
+            }
 
             using (var serviceProvider = serviceCollection.BuildServiceProvider())
             {
@@ -77,15 +110,31 @@ namespace LazyProxy.ServiceProvider.Tests
             }
         }
 
-        [Fact]
-        public void ServiceCtorMustBeExecutedAfterPropertySetterIsCalledForTheFirstTime()
+        [InlineData(ServiceLifetime.Scoped)]
+        [InlineData(ServiceLifetime.Singleton)]
+        [InlineData(ServiceLifetime.Transient)]
+        [Theory]
+        public void ServiceCtorMustBeExecutedAfterPropertySetterIsCalledForTheFirstTime(ServiceLifetime lifetime)
         {
             _service1Id = string.Empty;
             _service2Id = string.Empty;
 
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddLazyScoped<IService1, Service1>();
-            serviceCollection.AddScoped<IService2, Service2>();
+            switch (lifetime)
+            {
+                case ServiceLifetime.Scoped:
+                    serviceCollection.AddLazyScoped<IService1, Service1>();
+                    serviceCollection.AddScoped<IService2, Service2>();
+                    break;
+                case ServiceLifetime.Singleton:
+                    serviceCollection.AddLazySingleton<IService1, Service1>();
+                    serviceCollection.AddSingleton<IService2, Service2>();
+                    break;
+                case ServiceLifetime.Transient:
+                    serviceCollection.AddLazyTransient<IService1, Service1>();
+                    serviceCollection.AddTransient<IService2, Service2>();
+                    break;
+            }
 
             using (var serviceProvider = serviceCollection.BuildServiceProvider())
             {
@@ -109,15 +158,31 @@ namespace LazyProxy.ServiceProvider.Tests
             }
         }
 
-        [Fact]
-        public void ArgumentsMustBePassedToMethodCorrectly()
+        [InlineData(ServiceLifetime.Scoped)]
+        [InlineData(ServiceLifetime.Singleton)]
+        [InlineData(ServiceLifetime.Transient)]
+        [Theory]
+        public void ArgumentsMustBePassedToMethodCorrectly(ServiceLifetime lifetime)
         {
             const string arg1 = nameof(arg1);
             const string arg2 = nameof(arg2);
 
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddLazyScoped<IService1, Service1>();
-            serviceCollection.AddScoped<IService2, Service2>();
+            switch (lifetime)
+            {
+                case ServiceLifetime.Scoped:
+                    serviceCollection.AddLazyScoped<IService1, Service1>();
+                    serviceCollection.AddScoped<IService2, Service2>();
+                    break;
+                case ServiceLifetime.Singleton:
+                    serviceCollection.AddLazySingleton<IService1, Service1>();
+                    serviceCollection.AddSingleton<IService2, Service2>();
+                    break;
+                case ServiceLifetime.Transient:
+                    serviceCollection.AddLazyTransient<IService1, Service1>();
+                    serviceCollection.AddTransient<IService2, Service2>();
+                    break;
+            }
 
             using (var serviceProvider = serviceCollection.BuildServiceProvider())
             {
@@ -131,11 +196,25 @@ namespace LazyProxy.ServiceProvider.Tests
             }
         }
 
-        [Fact]
-        public void DependencyResolutionExceptionMustBeThrownAfterMethodIsCalledWhenDependentServiceIsNotRegistered()
+        [InlineData(ServiceLifetime.Scoped)]
+        [InlineData(ServiceLifetime.Singleton)]
+        [InlineData(ServiceLifetime.Transient)]
+        [Theory]
+        public void DependencyResolutionExceptionMustBeThrownAfterMethodIsCalledWhenDependentServiceIsNotRegistered(ServiceLifetime lifetime)
         {
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddLazyScoped<IService1, Service1>();
+            switch (lifetime)
+            {
+                case ServiceLifetime.Scoped:
+                    serviceCollection.AddLazyScoped<IService1, Service1>();
+                    break;
+                case ServiceLifetime.Singleton:
+                    serviceCollection.AddLazySingleton<IService1, Service1>();
+                    break;
+                case ServiceLifetime.Transient:
+                    serviceCollection.AddLazyTransient<IService1, Service1>();
+                    break;
+            }
 
             using (var serviceProvider = serviceCollection.BuildServiceProvider())
             {
@@ -145,11 +224,25 @@ namespace LazyProxy.ServiceProvider.Tests
             }
         }
 
-        [Fact]
-        public void InternalServiceMustBeResolvedFromAssemblyMarkedAsVisibleForProxy()
+        [InlineData(ServiceLifetime.Scoped)]
+        [InlineData(ServiceLifetime.Singleton)]
+        [InlineData(ServiceLifetime.Transient)]
+        [Theory]
+        public void InternalServiceMustBeResolvedFromAssemblyMarkedAsVisibleForProxy(ServiceLifetime lifetime)
         {
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddLazyScoped<IInternalService, InternalService>();
+            switch (lifetime)
+            {
+                case ServiceLifetime.Scoped:
+                    serviceCollection.AddLazyScoped<IInternalService, InternalService>();
+                    break;
+                case ServiceLifetime.Singleton:
+                    serviceCollection.AddLazySingleton<IInternalService, InternalService>();
+                    break;
+                case ServiceLifetime.Transient:
+                    serviceCollection.AddLazyTransient<IInternalService, InternalService>();
+                    break;
+            }
 
             using (var serviceProvider = serviceCollection.BuildServiceProvider())
             {
@@ -160,10 +253,32 @@ namespace LazyProxy.ServiceProvider.Tests
             }
         }
 
-        [Fact]
-        public void ClosedGenericServiceMustBeResolved()
+        [InlineData(ServiceLifetime.Scoped)]
+        [InlineData(ServiceLifetime.Singleton)]
+        [InlineData(ServiceLifetime.Transient)]
+        [Theory]
+        public void ClosedGenericServiceMustBeResolved(ServiceLifetime lifetime)
         {
             var serviceCollection = new ServiceCollection();
+            switch (lifetime)
+            {
+                case ServiceLifetime.Scoped:
+                    serviceCollection.AddLazyScoped(
+                typeof(IGenericService<ParameterType1, ParameterType2, ParameterType3>),
+                typeof(GenericService<ParameterType1, ParameterType2, ParameterType3>));
+                    break;
+                case ServiceLifetime.Singleton:
+                    serviceCollection.AddLazySingleton(
+                typeof(IGenericService<ParameterType1, ParameterType2, ParameterType3>),
+                typeof(GenericService<ParameterType1, ParameterType2, ParameterType3>));
+                    break;
+                case ServiceLifetime.Transient:
+                    serviceCollection.AddLazyTransient(
+                typeof(IGenericService<ParameterType1, ParameterType2, ParameterType3>),
+                typeof(GenericService<ParameterType1, ParameterType2, ParameterType3>));
+                    break;
+            }
+
             serviceCollection.AddLazyScoped(
                 typeof(IGenericService<ParameterType1, ParameterType2, ParameterType3>),
                 typeof(GenericService<ParameterType1, ParameterType2, ParameterType3>));
