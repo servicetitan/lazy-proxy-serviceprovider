@@ -1,3 +1,5 @@
+[![Build LazyProxy.ServiceProvider](https://github.com/servicetitan/lazy-proxy-serviceprovider/actions/workflows/ci.yml/badge.svg)](https://github.com/servicetitan/lazy-proxy-serviceprovider/actions/workflows/ci.yml)
+
 # Lazy Dependency Injection for Microsoft's DI ServiceProvider
 
 A [LazyProxy](https://github.com/servicetitan/lazy-proxy) can be used for IoC containers to improve performance by changing the resolve behavior.
